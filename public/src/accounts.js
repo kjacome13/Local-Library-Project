@@ -22,8 +22,6 @@ function getTotalNumberOfBorrows(account, books) {
 
 //this function should return an array of all books that are currently in possesion of requested account
 function getBooksPossessedByAccount(account, books, authors) {
-  //setting variable for accounts id for easy future reference
-  const idNum = account.id;
   //creating empty array to hold all possessed book objects
   let possessedBooks = [];
 
@@ -31,7 +29,7 @@ function getBooksPossessedByAccount(account, books, authors) {
   const findAuthor = (authors, id) => authors.find(author => author.id === id);
   
   //creating an array of books that are filtered by the borrowers id returned status 
-  possessedBooks = books.filter(book => book.borrows[0].id === idNum && !book.borrows[0].returned);
+  possessedBooks = books.filter(book => book.borrows[0].id === account.id && !book.borrows[0].returned);
   //creating the format for the possesed book objects and putting current book and author info inside
   possessedBooks = possessedBooks.map(book => {
     const authorInfo = findAuthor(authors, book.authorId);
