@@ -26,8 +26,10 @@ function getBooksPossessedByAccount(account, books, authors) {
   const idNum = account.id;
   //creating empty array to hold all possessed book objects
   let possessedBooks = [];
+
   //creating a helper function to find the author by id number
   const findAuthor = (authors, id) => authors.find(author => author.id === id);
+  
   //creating an array of books that are filtered by the borrowers id returned status 
   possessedBooks = books.filter(book => book.borrows[0].id === idNum && !book.borrows[0].returned);
     //.some(borrower => borrower.id === idNum && !borrower.returned));

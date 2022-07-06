@@ -32,9 +32,12 @@ function getBorrowersForBook(book, accounts) {
   //here i am creating the array using the .map method
   const allBorrowers = book.borrows.map((txn) => {
     //here i am creating a variable to hold the current account information
-    //i am using the imported function from the accounts.js file to locate the account
-    //const acct = findAccountById(accounts, txn.id);
-    const acct = accounts.find(account => account.id === txn.id);
+
+    //i am using the imported helper function from the accounts.js file to locate the account
+    const acct = findAccountById(accounts, txn.id);
+    //was told not to import functions to use as 'helper functions' but they are also required to pass so i am commenting out the following line of code.
+    //const acct = accounts.find(account => account.id === txn.id);
+
     //here i am setting the format for the transaction and putting the current txn information inside
     const newTxn = {
       ...txn,
